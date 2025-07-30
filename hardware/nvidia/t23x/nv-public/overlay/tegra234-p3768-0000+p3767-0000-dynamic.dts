@@ -15,3 +15,4 @@
  * and it will automatically be disabled for SKUs without PVA support.
  */
 #include "tegra234-p3767-sku-handling.dtsi"
+#include "tegra234-p3768-camera-rpicam3-imx708.dtsi"

@@ -17,6 +17,7 @@ obj-m += nv_imx274.o
 obj-m += nv_imx318.o
 obj-m += nv_imx390.o
 obj-m += nv_imx477.o
+obj-$(CONFIG_NV_VIDEO_IMX708) += nv_imx708.o
 obj-m += nv_ov5693.o
 obj-m += nv_ar0234.o
 obj-m += nv_hawk_owl.o

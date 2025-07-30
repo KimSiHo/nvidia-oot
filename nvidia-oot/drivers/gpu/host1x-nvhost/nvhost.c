@@ -489,6 +489,7 @@ int nvhost_syncpt_unit_interface_init(struct platform_device *pdev)
 
 	pdata->syncpt_unit_interface = syncpt_if;
 
+	pr_info("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhi");
 	dev_info(&pdev->dev,
 		 "syncpt_unit_base %llx syncpt_unit_size %zx size %x\n",
 		 base, syncpt_if->size, syncpt_if->page_size);
