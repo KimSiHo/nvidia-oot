@@ -1,0 +1,21 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	overlay-name = "BH1750 Light Sensor";
+	jetson-header-name = "Jetson 40pin Header";
+	compatible = "nvidia,p3768-0000+p3767-0005-super", "nvidia,p3767-0005", "nvidia,tegra234";
+
+	fragment@0 {
+		target = <&gen2_i2c>;
+		__overlay__ {
+			status = "okay";
+
+			bh1750@23 {
+				compatible = "rohm,bh1750";
+				reg = <0x23>;
+				status = "okay";
+			};
+		};
+	};
+};

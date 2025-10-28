@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+	overlay-name = "My Jetson Overlay";
+	jetson-header-name = "Jetson 40pin Header";
+	compatible = "nvidia,p3768-0000+p3767-0005-super", "nvidia,p3767-0005", "nvidia,tegra234";
+
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			my-custom-property = "This Is My Overlay";
+		};
+	};
+};

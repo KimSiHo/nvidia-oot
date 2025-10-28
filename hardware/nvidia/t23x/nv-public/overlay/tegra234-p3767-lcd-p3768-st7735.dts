@@ -1,0 +1,34 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/gpio/tegra234-gpio.h>
+
+/ {
+	overlay-name = "JK-128160-ST7735 SPI TFT";
+	compatible = "nvidia,p3768-0000+p3767-0005-super", "nvidia,p3767-0005", "nvidia,tegra234";
+
+	fragment@0 {
+		target-path = "/bus@0/spi@3210000";
+		__overlay__ {
+			status = "okay";
+
+			st7735r@0 {
+				compatible = "sitronix,st7735r";
+				reg = <0>;
+				spi-max-frequency = <24000000>;
+				rotate = <0>;
+
+				dc-gpios  = <&gpio TEGRA234_MAIN_GPIO(G, 2) 0>;
+				reset-gpios = <&gpio TEGRA234_MAIN_GPIO(H, 0) 0>;
+
+				width = <128>;
+				height = <160>;
+
+				buswidth = <8>;
+				rgb565 = <1>;
+				fps = <30>;
+				status = "okay";
+			};
+		};
+	};
+};

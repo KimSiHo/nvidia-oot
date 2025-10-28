@@ -2109,14 +2109,20 @@ static struct platform_driver gk20a_driver = {
 
 static int __init gk20a_init(void)
 {
-
 	int ret;
 
+	pr_info("gk20a_init: start\n");
+
 	ret = nvgpu_pci_init();
+	pr_debug("gk20a_init: nvgpu_pci_init() returned %d\n", ret);
 	if (ret)
 		return ret;
 
-	return platform_driver_register(&gk20a_driver);
+	pr_debug("gk20a_init: registering gk20a_driver\n");
+	ret = platform_driver_register(&gk20a_driver);
+	pr_debug("gk20a_init: platform_driver_register() returned %d\n", ret);
+
+	return ret;
 }
 
 static void __exit gk20a_exit(void)

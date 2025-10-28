@@ -1,0 +1,33 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/tegra234-p3767-0000-common.h>
+#include <dt-bindings/gpio/tegra234-gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+#define ECHO_PINS	TEGRA234_MAIN_GPIO(AC, 6)
+#define TRIG_PINS	TEGRA234_MAIN_GPIO(N, 1)
+
+/ {
+	overlay-name = "Ultrasonic hcsr04";
+	jetson-header-name = "Jetson 40pin Header";
+	compatible = "nvidia,p3768-0000+p3767-0005-super", "nvidia,p3767-0005", "nvidia,tegra234";
+
+	fragment@0 {
+		target-path = "/bus@0";
+		__overlay__ {
+			hcsr04@0 {
+				compatible = "devantech,srf04";
+				status = "okay";
+
+				trig-gpios = <&gpio TRIG_PINS GPIO_ACTIVE_HIGH>;
+				echo-gpios = <&gpio ECHO_PINS GPIO_ACTIVE_HIGH>;
+
+				interrupt-parent = <&gpio>;
+				interrupts = <ECHO_PINS IRQ_TYPE_EDGE_BOTH>;
+
+				startup-time-ms = <100>;
+			};
+		};
+	};
+};

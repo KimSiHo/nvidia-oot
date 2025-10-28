@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    overlay-name = "AT24C256 EEPROM";
+    jetson-header-name = "Jetson 40pin Header";
+    compatible = "nvidia,p3768-0000+p3767-0005-super", "nvidia,p3767-0005", "nvidia,tegra234";
+
+    fragment@0 {
+		target = <&gen8_i2c>;
+        __overlay__ {
+            status = "okay";
+
+            at24@50 {
+                compatible = "atmel,24c256";
+                reg = <0x50>;
+                pagesize = <64>;
+                size = <32768>;
+                status = "okay";
+            };
+        };
+    };
+};
