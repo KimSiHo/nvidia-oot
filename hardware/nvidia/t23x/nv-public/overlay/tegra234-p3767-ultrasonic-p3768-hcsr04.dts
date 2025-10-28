@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/tegra234-p3767-0000-common.h>
+
+/ {
+	overlay-name = "Ultrasonic hcsr04";
+
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			hcsr04@0 {
+				compatible = "devantech,srf04";
+				status = "okay";
+
+				trig-gpios = <&gpio TEGRA234_MAIN_GPIO(Q, 6) GPIO_ACTIVE_HIGH>;
+				echo-gpios = <&gpio TEGRA234_MAIN_GPIO(Q, 4) GPIO_ACTIVE_HIGH>;
+				power-gpios = <&gpio TEGRA234_MAIN_GPIO(P, 3) GPIO_ACTIVE_HIGH>;
+
+				startup-time-ms = <100>;
+			};
+		};
+	};
+};
